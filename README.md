@@ -4,13 +4,16 @@
   <a href="https://awesome.re">
     <img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
   </a>
+  <a href="https://creativecommons.org/publicdomain/zero/1.0/">
+    <img src="https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg" alt="License: CC0 1.0">
+  </a>
   <p>A curated list of literature, open-source projects, and products on<br>self-evolving agents &amp; recursive self-improvement.</p>
   <p><b>English</b> · <a href="README_cn.md">中文</a></p>
 </div>
 
 ---
 
-The body is organized by **object of evolution** in six layers, each annotated with its characteristic failure mode. The remaining sections (algorithmic foundations, self-evaluation, safety, benchmarks) cut across layers.
+This list covers research and systems in which some component of an AI system is improved through iteration — from single-response self-critique to agents that rewrite their own code. The list is organized by **object of evolution** in six layers, each annotated with its characteristic failure mode. The remaining sections (algorithmic foundations, self-evaluation, safety, benchmarks) cut across layers.
 
 ## Contents
 
@@ -33,6 +36,8 @@ The body is organized by **object of evolution** in six layers, each annotated w
 
 ## Surveys
 
+Cross-cutting overviews of self-evolving agents and recursive self-improvement.
+
 - [Recursive Self-Improvement in AI: From Bounded Self-Refinement to Autonomous Research Loops](https://arxiv.org/abs/2607.07663) - Survey of 1,250 papers organized along two axes — object of improvement × loop closure — with a verification hierarchy (formal verifiers > execution feedback > learned judges > intrinsic self-assessment). (arXiv 2026)
 - [A Comprehensive Survey of Self-Evolving AI Agents: Bridging Foundation Models and Lifelong Agentic Systems](https://arxiv.org/abs/2508.07407) - Organizes agent-evolution literature around feedback loops, update targets, application domains, evaluation, and safety. (arXiv 2025)
 - [A Survey on Self-Evolution of Large Language Models](https://arxiv.org/abs/2404.14387) - Proposes a four-phase self-evolution framework: experience acquisition, refinement, update, evaluation. (arXiv 2024)
@@ -43,6 +48,8 @@ The body is organized by **object of evolution** in six layers, each annotated w
 The object of evolution is the system's output — from single responses to persistent artifacts. Characteristic failure mode: **self-confirmation** — iteration without an external signal is rewriting, not progress.
 
 ### Within-Task Self-Refinement (No Persistence)
+
+Single-task loops: the model critiques and rewrites its own output within one session, leaving nothing behind.
 
 - [Self-Consistency Improves Chain of Thought Reasoning](https://arxiv.org/abs/2203.11171) - Samples multiple reasoning paths and takes the most consistent answer. (ICLR 2023)
 - [Self-Refine: Iterative Refinement with Self-Feedback](https://arxiv.org/abs/2303.17651) - One model acts as generator, critic, and refiner over multiple iterations. (NeurIPS 2023)
@@ -56,18 +63,20 @@ The object of evolution is the system's output — from single responses to pers
 Artifacts evolve under evaluator pressure across generations while the system itself stays fixed.
 
 - [Mathematical Discoveries from Program Search with Large Language Models (FunSearch)](https://www.nature.com/articles/s41586-023-06924-6) - Pairs a frozen coding LLM with an executable evaluator for evolutionary program search, yielding new mathematical results. (Nature 2024) [[code]](https://github.com/google-deepmind/funsearch)
-- [AlphaEvolve: A Coding Agent for Scientific and Algorithmic Discovery](https://arxiv.org/abs/2506.13131) - Combines LLM-ensemble sampling, automated evaluation, and evolutionary search for algorithm discovery and infrastructure optimization. (DeepMind 2025) [[problems]](https://github.com/google-deepmind/alphaevolve_repository_of_problems)
+- [AlphaEvolve: A Coding Agent for Scientific and Algorithmic Discovery](https://arxiv.org/abs/2506.13131) - From Google DeepMind: combines LLM-ensemble sampling, automated evaluation, and evolutionary search for algorithm discovery and infrastructure optimization. (arXiv 2025) [[problems]](https://github.com/google-deepmind/alphaevolve_repository_of_problems)
 - [ShinkaEvolve: Towards Open-Ended and Sample-Efficient Program Evolution](https://arxiv.org/abs/2509.19349) - Sample-efficiency-focused program evolution framework reaching comparable results under small evaluation budgets. (ICLR 2026) [[code]](https://github.com/SakanaAI/ShinkaEvolve)
 - [Vesper: Effective Harness Engineering for Algorithm Discovery with Coding Agents](https://arxiv.org/abs/2605.15221) - Harness-engineering study for algorithm discovery with coding agents. (arXiv 2026)
 - [AutoML-Zero: Evolving Machine Learning Algorithms From Scratch](https://arxiv.org/abs/2003.03384) - Evolves complete learning algorithms from basic mathematical operations, minimizing human design bias. (ICML 2020)
-- [Evolutionary Optimization of Model Merging Recipes](https://arxiv.org/abs/2403.13187) - Evolves combinations of open-source models in parameter space and data-flow space. (Sakana, arXiv 2024)
-- [The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery](https://arxiv.org/abs/2408.06292) - The artifact is the research itself: automated idea generation, experiments, paper writing, and reviewing in a full loop. (Sakana, arXiv 2024) [[code]](https://github.com/SakanaAI/AI-Scientist)
+- [Evolutionary Optimization of Model Merging Recipes](https://arxiv.org/abs/2403.13187) - From Sakana AI: evolves combinations of open-source models in parameter space and data-flow space. (arXiv 2024)
+- [The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery](https://arxiv.org/abs/2408.06292) - From Sakana AI: the artifact is the research itself — automated idea generation, experiments, paper writing, and reviewing in a full loop. (arXiv 2024) [[code]](https://github.com/SakanaAI/AI-Scientist)
 
 ## L2 Model Level
 
 The object of evolution is the model's own parameters: weights updated with self-generated data, rewards, or reasoning traces. Characteristic failure mode: **model collapse** — iterated training on self-generated data drains diversity.
 
 ### Self-Training & Self-Rewarding
+
+The model generates its own training signal — data, preferences, or rewards — and updates its weights on it.
 
 - [Self-Instruct: Aligning Language Models with Self-Generated Instructions](https://arxiv.org/abs/2212.10560) - Bootstraps instruction data from the model itself, filtered, then fine-tunes. (ACL 2023)
 - [Large Language Models Can Self-Improve](https://arxiv.org/abs/2210.11610) - Uses high-confidence self-generated answers as pseudo-labels to iteratively fine-tune reasoning tasks. (EMNLP 2023)
@@ -79,6 +88,8 @@ The object of evolution is the model's own parameters: weights updated with self
 - [Agentic ESOpt: Fine-Tuning Long-Horizon LLM Agents with Minimal GPU Requirements](https://arxiv.org/abs/2608.17310) - Full-parameter, gradient-free agent fine-tuning via evolution strategies: sample weight perturbations, score whole trajectories with environment rewards, apply reward-weighted updates. (arXiv 2026) [[code]](https://github.com/zz1358m/Agentic-ESOpt)
 
 ### Self-Taught Reasoning
+
+Bootstrapping reasoning ability from the model's own rationales rather than human demonstrations.
 
 - [STaR: Bootstrapping Reasoning With Reasoning](https://arxiv.org/abs/2203.14465) - Alternates rationale generation, answer filtering, and fine-tuning to bootstrap reasoning. (NeurIPS 2022)
 - [Quiet-STaR: Language Models Can Teach Themselves to Think Before Speaking](https://arxiv.org/abs/2403.09629) - Trains models to generate internal reasoning within arbitrary text, not just QA tasks. (COLM 2024)
@@ -102,11 +113,15 @@ The object of evolution is the agent's prompts, tools, workflows, and own code: 
 
 ### Self-Modifying Agents
 
+Agents that edit their own source code and keep a lineage of validated versions.
+
 - [Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents](https://arxiv.org/abs/2505.22954) - Agents modify their own code; benchmark-validated improvements enter an open-ended archive forming a growing tree; SWE-bench 20% → 50%. (ICLR 2026) [[code]](https://github.com/jennyzzt/dgm)
 - [SICA: A Self-Improving Coding Agent](https://arxiv.org/abs/2504.15228) - An agent that edits its own implementation and maintains a versioned lineage, empirically improving on SWE-bench Verified. (ICLR 2025 SSI-FM Workshop)
 - [Gödel Agent: A Self-Referential Agent Framework for Recursive Self-Improvement](https://arxiv.org/abs/2410.04444) - Self-referential agent framework that can inspect and rewrite its own logic without fixed hand-crafted optimization routines. (ACL 2025)
 
 ### Prompt & Program Optimization
+
+Automated search over prompts, workflows, and agent architectures expressed as code.
 
 - [DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines](https://arxiv.org/abs/2310.03714) - Automatically optimizes prompts and demonstrations against user-defined metrics, compiling declarative LM programs. (arXiv 2023) [[code]](https://github.com/stanfordnlp/dspy)
 - [Large Language Models as Optimizers (OPRO)](https://arxiv.org/abs/2309.03409) - Iteratively proposes natural-language solutions and prompts from scored history. (ICLR 2024)
@@ -144,19 +159,21 @@ The shared source of search algorithms used across all layers above.
 How models measure their own competence and behavior — the metrology of "is the improvement real" for every layer.
 
 - [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050) - Trains process reward models to score intermediate reasoning steps, guiding more reliable solution selection. (ICLR 2024)
-- [Language Models (Mostly) Know What They Know](https://arxiv.org/abs/2207.05221) - Studies models' calibration in assessing the correctness of their own answers. (Anthropic, arXiv 2022)
+- [Language Models (Mostly) Know What They Know](https://arxiv.org/abs/2207.05221) - Anthropic study of models' calibration in assessing the correctness of their own answers. (arXiv 2022)
 - [Looking Inward: Language Models Can Learn About Themselves by Introspection](https://arxiv.org/abs/2410.13787) - Models hold privileged predictive access to their own behavior, beating other models' predictions. (ICLR 2025)
 
 ## Safety & Goal Preservation
+
+What can go wrong when systems change themselves: reward tampering, goal drift, deceptive alignment, and the oversight problem.
 
 - [Concrete Problems in AI Safety](https://arxiv.org/abs/1606.06565) - Framing paper for practical safety problems: reward hacking, scalable oversight, safe exploration, robustness to distributional shift. (arXiv 2016)
 - [Scalable Agent Alignment via Reward Modeling](https://arxiv.org/abs/1811.07871) - Recursive reward modeling: supervising agents beyond direct human evaluation ability. (arXiv 2018)
 - [Risks from Learned Optimization in Advanced Machine Learning Systems](https://arxiv.org/abs/1906.01820) - The mesa-optimizer analysis: learned internal objectives may diverge from training objectives. (arXiv 2019)
 - [Reward Tampering Problems and Solutions in Reinforcement Learning](https://arxiv.org/abs/1908.04734) - Uses causal influence diagrams to characterize incentives for tampering with the reward process, with design principles. (Synthese 2021)
 - [Optimal Policies Tend to Seek Power](https://arxiv.org/abs/1912.01683) - Proves that optimal agents have incentives to preserve options and seek environmental control under certain conditions. (NeurIPS 2021)
-- [Constitutional AI: Harmlessness from AI Feedback](https://arxiv.org/abs/2212.08073) - Scales oversight with written principles and model-generated critiques while retaining explicit behavioral constraints. (Anthropic, arXiv 2022)
+- [Constitutional AI: Harmlessness from AI Feedback](https://arxiv.org/abs/2212.08073) - Anthropic's approach: scales oversight with written principles and model-generated critiques while retaining explicit behavioral constraints. (arXiv 2022)
 - [Model Evaluation for Extreme Risks](https://arxiv.org/abs/2305.15324) - Capability and alignment evaluation framework for dangerous emergent capabilities, including autonomous replication and adaptation. (arXiv 2023)
-- [Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training](https://arxiv.org/abs/2401.05566) - Deceptive policies can remain hidden through standard safety training. (Anthropic, arXiv 2024)
+- [Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training](https://arxiv.org/abs/2401.05566) - From Anthropic: deceptive policies can remain hidden through standard safety training. (arXiv 2024)
 - [Safely Interruptible Agents](https://intelligence.org/files/Interruptibility.pdf) - Designing RL agents that do not acquire incentives to resist human intervention. (UAI 2016)
 - [Evaluating Goal Drift in Language Model Agents](https://arxiv.org/abs/2505.02709) - Measures goal drift in long-horizon agents under environmental pressure. (arXiv 2025)
 - [Your Agent May Misevolve: Emergent Risks in Self-evolving LLM Agents](https://arxiv.org/abs/2509.26354) - Coins "misevolution" and systematically studies harmful drift across four evolutionary pathways: model, memory, tools, workflow. (ICLR 2026)
@@ -164,12 +181,16 @@ How models measure their own competence and behavior — the metrology of "is th
 
 ## Benchmarks
 
+Task suites used to test whether claims of self-improvement hold up.
+
 - [SWE-bench](https://arxiv.org/abs/2310.06770) - Benchmark of generating patches that resolve real-world GitHub issues, verified by repository test suites; the standard evaluation for self-modifying systems like DGM. (ICLR 2024)
 - [MLAgentBench](https://arxiv.org/abs/2310.03302) - Evaluates whether language agents can autonomously execute and improve ML experiments from research instructions. (ICML 2024)
-- [MLE-bench](https://arxiv.org/abs/2410.07095) - End-to-end ML engineering evaluation across 75 Kaggle competitions. (OpenAI, ICLR 2025)
+- [MLE-bench](https://arxiv.org/abs/2410.07095) - OpenAI's end-to-end ML engineering evaluation across 75 Kaggle competitions. (ICLR 2025)
 - [RE-Bench](https://arxiv.org/abs/2411.15114) - Open-ended ML R&D tasks comparing AI agents against human experts under fixed time budgets. (ICML 2025)
 
 ## Open-Source Frameworks & Tools
+
+Runnable implementations, from evolutionary coding agents to self-optimizing LM pipelines.
 
 - [OpenEvolve](https://github.com/algorithmicsuperintelligence/openevolve) - Open-source reproduction of AlphaEvolve; community-maintained evolutionary coding agent.
 - [DGM](https://github.com/jennyzzt/dgm) - Official implementation of the Darwin Gödel Machine.
@@ -188,6 +209,8 @@ How models measure their own competence and behavior — the metrology of "is th
 
 ## Products & Companies
 
+Commercial efforts built around self-evolving agent technology.
+
 - [Sakana AI](https://sakana.ai) - The company behind The AI Scientist series; automated-research product line.
 - [Apodex](https://platform.apodex.ai) - In-house models + open-source agent runtime ([FrontierAgent](https://github.com/ApodexAI/FrontierAgent)); verification-centric research agent teams.
 - [Letta](https://www.letta.com) - Commercial platform for stateful, memory-driven agents; open-source framework listed above.
@@ -195,9 +218,15 @@ How models measure their own competence and behavior — the metrology of "is th
 
 ## Historical & Theoretical Foundations
 
+Pre-LLM ideas that anticipated recursive self-improvement.
+
 - [Gödel Machines: Self-Referential Universal Problem Solvers](https://people.idsia.ch/~juergen/goedelmachine.html) - Fully self-referential machines that rewrite themselves after proving the modification improves expected utility. The theoretical prototype of RSI. (Schmidhuber, 2006)
 - [POWERPLAY: Training an Increasingly General Problem Solver](https://arxiv.org/abs/1112.5309) - Alternates inventing new tasks and modifying the solver, steadily growing a verified capability set. (arXiv 2011)
 - [Learning to Learn by Gradient Descent by Gradient Descent](https://arxiv.org/abs/1606.04474) - Meta-learns a recurrent update rule that can replace hand-designed optimization algorithms. (NeurIPS 2016)
+
+## Contributing
+
+Contributions are welcome. Each entry should include a brief description and a valid source link.
 
 ## License
 

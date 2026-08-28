@@ -4,13 +4,16 @@
   <a href="https://awesome.re">
     <img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
   </a>
+  <a href="https://creativecommons.org/publicdomain/zero/1.0/">
+    <img src="https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg" alt="License: CC0 1.0">
+  </a>
   <p>自进化 Agent / 递归自我改进领域的<br>文献、开源项目与产品全景列表。</p>
   <p><a href="README.md">English</a> · <b>中文</b></p>
 </div>
 
 ---
 
-主体按**进化对象**分六层，每层标注该层的特征性失败模式；其余分区（算法基础、自我评估、安全、基准）为横切面。
+本列表收录通过迭代来改进 AI 系统某一部分的研究与系统——从单次响应的自我批评，到改写自身代码的 Agent。主体按**进化对象**分六层，每层标注该层的特征性失败模式；其余分区（算法基础、自我评估、安全、基准）为横切面。
 
 ## 目录
 
@@ -20,7 +23,7 @@
 - [L3 上下文与记忆层](#l3-上下文与记忆层)
 - [L4 脚手架与自修改层](#l4-脚手架与自修改层)
 - [L5 元改进层](#l5-元改进层)
-- [L6 标准层](#l6-标准层)
+- [L6 准则层](#l6-准则层)
 - [算法基础：开放式进化与质量多样性](#算法基础开放式进化与质量多样性)
 - [自我评估与内省](#自我评估与内省)
 - [安全与目标保持](#安全与目标保持)
@@ -33,6 +36,8 @@
 
 ## 综述
 
+自进化 Agent 与递归自我改进的横向综述。
+
 - [Recursive Self-Improvement in AI: From Bounded Self-Refinement to Autonomous Research Loops](https://arxiv.org/abs/2607.07663) - 基于 1,250 篇文献的综述，按「改进对象 × 回路闭合程度」双轴分类，提出验证层级（形式验证器 > 执行反馈 > 学习型裁判 > 内在自评）。(arXiv 2026)
 - [A Comprehensive Survey of Self-Evolving AI Agents: Bridging Foundation Models and Lifelong Agentic Systems](https://arxiv.org/abs/2508.07407) - 围绕反馈回路、更新目标、领域应用、评估与安全组织 agent 进化文献。(arXiv 2025)
 - [A Survey on Self-Evolution of Large Language Models](https://arxiv.org/abs/2404.14387) - 提出经验获取、精炼、更新、评估的四阶段自进化框架。(arXiv 2024)
@@ -44,30 +49,34 @@
 
 ### 任务内自我精炼（无持久化）
 
+单任务回路：模型在单次会话内自我批评并改写输出，不留存任何状态。
+
 - [Self-Consistency Improves Chain of Thought Reasoning](https://arxiv.org/abs/2203.11171) - 采样多条推理路径并取一致性最高的答案。(ICLR 2023)
 - [Self-Refine: Iterative Refinement with Self-Feedback](https://arxiv.org/abs/2303.17651) - 同一模型兼任生成者、批评者与改进者，多轮迭代输出。(NeurIPS 2023)
 - [CRITIC: Large Language Models Can Self-Correct with Tool-Interactive Critiquing](https://arxiv.org/abs/2305.11738) - 用外部工具验证输出，将证据转化为迭代修正。(ICLR 2024)
 - [Chain-of-Verification Reduces Hallucination in Large Language Models](https://arxiv.org/abs/2309.11495) - 先规划并回答独立验证问题，再产出修正响应。(ACL 2024 Findings)
 - [Improving Factuality and Reasoning in Language Models through Multiagent Debate](https://arxiv.org/abs/2305.14325) - 多个模型实例经迭代提案与互评收敛到更准确的答案。(ICML 2024)
-- [Large Language Models Cannot Self-Correct Reasoning Yet](https://arxiv.org/abs/2310.01798) - 无外部反馈的内在自我纠错会降低推理表现；本层的负结果基线。(ICLR 2024)
+- [Large Language Models Cannot Self-Correct Reasoning Yet](https://arxiv.org/abs/2310.01798) - 无外部反馈的内在自我纠错会降低推理表现；本层的反面基线（阴性结果）。(ICLR 2024)
 
 ### 跨代产物进化（持久产物）
 
 产物在评估器压力下跨代演化，系统本身不变。
 
 - [Mathematical Discoveries from Program Search with Large Language Models (FunSearch)](https://www.nature.com/articles/s41586-023-06924-6) - 冻结代码 LLM 与可执行评估器配对做进化式程序搜索，产出新数学结果。(Nature 2024) [[code]](https://github.com/google-deepmind/funsearch)
-- [AlphaEvolve: A Coding Agent for Scientific and Algorithmic Discovery](https://arxiv.org/abs/2506.13131) - 结合 LLM 集成采样、自动化评估与进化搜索，应用于算法发现与基础设施优化。(DeepMind 2025) [[problems]](https://github.com/google-deepmind/alphaevolve_repository_of_problems)
+- [AlphaEvolve: A Coding Agent for Scientific and Algorithmic Discovery](https://arxiv.org/abs/2506.13131) - 来自 Google DeepMind：结合 LLM 集成采样、自动化评估与进化搜索，应用于算法发现与基础设施优化。(arXiv 2025) [[problems]](https://github.com/google-deepmind/alphaevolve_repository_of_problems)
 - [ShinkaEvolve: Towards Open-Ended and Sample-Efficient Program Evolution](https://arxiv.org/abs/2509.19349) - 以样本效率为重点的程序进化框架，少量评估预算下达到可比效果。(ICLR 2026) [[code]](https://github.com/SakanaAI/ShinkaEvolve)
 - [Vesper: Effective Harness Engineering for Algorithm Discovery with Coding Agents](https://arxiv.org/abs/2605.15221) - 面向算法发现的编码 Agent 脚手架工程研究。(arXiv 2026)
 - [AutoML-Zero: Evolving Machine Learning Algorithms From Scratch](https://arxiv.org/abs/2003.03384) - 从基础数学操作出发进化完整学习算法，最小化人工设计偏置。(ICML 2020)
-- [Evolutionary Optimization of Model Merging Recipes](https://arxiv.org/abs/2403.13187) - 在参数空间与数据流空间中进化开源模型的组合方式。(Sakana, arXiv 2024)
-- [The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery](https://arxiv.org/abs/2408.06292) - 产物为研究成果本身：自动化想法生成、实验、论文写作与评审的完整循环。(Sakana, arXiv 2024) [[code]](https://github.com/SakanaAI/AI-Scientist)
+- [Evolutionary Optimization of Model Merging Recipes](https://arxiv.org/abs/2403.13187) - 来自 Sakana AI：在参数空间与数据流空间中进化开源模型的组合方式。(arXiv 2024)
+- [The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery](https://arxiv.org/abs/2408.06292) - 来自 Sakana AI：产物为研究成果本身——自动化想法生成、实验、论文写作与评审的完整循环。(arXiv 2024) [[code]](https://github.com/SakanaAI/AI-Scientist)
 
 ## L2 模型层
 
 进化的对象是模型自身参数：用自生成的数据、奖励或推理链更新权重。特征失败模式：**模型坍塌**——在自生成数据上迭代训练导致多样性流失。
 
 ### 自训练与自奖励
+
+模型自行生成训练信号——数据、偏好或奖励——并用其更新自身权重。
 
 - [Self-Instruct: Aligning Language Models with Self-Generated Instructions](https://arxiv.org/abs/2212.10560) - 从模型自身生成引导指令数据并过滤后微调。(ACL 2023)
 - [Large Language Models Can Self-Improve](https://arxiv.org/abs/2210.11610) - 用高置信度的模型自生成答案作伪标签迭代微调推理任务。(EMNLP 2023)
@@ -79,6 +88,8 @@
 - [Agentic ESOpt: Fine-Tuning Long-Horizon LLM Agents with Minimal GPU Requirements](https://arxiv.org/abs/2608.17310) - 用进化策略做无梯度的全参数 Agent 微调：采样权重扰动，用环境奖励为完整轨迹评分，做奖励加权更新。(arXiv 2026) [[code]](https://github.com/zz1358m/Agentic-ESOpt)
 
 ### 自学推理
+
+从模型自身的推理链而非人工示范中自举推理能力。
 
 - [STaR: Bootstrapping Reasoning With Reasoning](https://arxiv.org/abs/2203.14465) - 交替进行推理链生成、答案过滤与微调，自举推理能力。(NeurIPS 2022)
 - [Quiet-STaR: Language Models Can Teach Themselves to Think Before Speaking](https://arxiv.org/abs/2403.09629) - 训练模型在任意文本中生成内部推理，而非仅问答任务。(COLM 2024)
@@ -94,7 +105,7 @@
 - [Voyager: An Open-Ended Embodied Agent with Large Language Models](https://arxiv.org/abs/2305.16291) - Minecraft 终身学习 Agent：自动课程 + 持续生长的可复用技能库。(TMLR 2024) [[code]](https://github.com/MineDojo/Voyager)
 - [Recursive Introspection: Teaching Language Model Agents How to Self-Improve](https://arxiv.org/abs/2407.18219) - 训练模型检查失败的先前尝试并在后续轮次递归改进。(NeurIPS 2024)
 - [A-MEM: Agentic Memory for LLM Agents](https://arxiv.org/abs/2502.12110) - 动态链接的笔记网络，组织方式随经验积累而演化。(NeurIPS 2025)
-- [Agentic Context Engineering (ACE)](https://arxiv.org/abs/2510.04618) - 将上下文作为结构化 playbook 进化，通过增量更新避免 context collapse。(ICLR 2026)
+- [Agentic Context Engineering (ACE)](https://arxiv.org/abs/2510.04618) - 将上下文视为结构化 playbook（行动手册），通过增量更新使其进化，避免上下文坍塌。(ICLR 2026)
 
 ## L4 脚手架与自修改层
 
@@ -102,18 +113,22 @@
 
 ### 自我修改 Agent
 
+编辑自身源代码、并保留经检验版本谱系的 Agent。
+
 - [Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents](https://arxiv.org/abs/2505.22954) - Agent 修改自身代码，改进经 benchmark 验证后进入开放式档案库形成生长树；SWE-bench 20% → 50%。(ICLR 2026) [[code]](https://github.com/jennyzzt/dgm)
 - [SICA: A Self-Improving Coding Agent](https://arxiv.org/abs/2504.15228) - Agent 编辑自身实现并维护版本谱系，在 SWE-bench Verified 上实证提升。(ICLR 2025 SSI-FM Workshop)
 - [Gödel Agent: A Self-Referential Agent Framework for Recursive Self-Improvement](https://arxiv.org/abs/2410.04444) - 自指 Agent 框架，可检查并改写自身逻辑，不依赖固定手工优化例程。(ACL 2025)
 
 ### 提示与程序优化
 
+对提示、工作流与以可执行代码表示的 Agent 架构做自动化搜索。
+
 - [DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines](https://arxiv.org/abs/2310.03714) - 按用户定义指标自动优化提示与示例，编译声明式 LM 程序。(arXiv 2023) [[code]](https://github.com/stanfordnlp/dspy)
 - [Large Language Models as Optimizers (OPRO)](https://arxiv.org/abs/2309.03409) - 从带分数的历史尝试中迭代提出自然语言解与提示。(ICLR 2024)
 - [Language Agent Tree Search (LATS)](https://arxiv.org/abs/2310.04406) - 统一蒙特卡洛树搜索、价值估计、环境反馈与自我反思，不更新权重。(ICML 2024)
 - [Automated Design of Agentic Systems (ADAS)](https://arxiv.org/abs/2408.08435) - 用元 Agent 发明并迭代改进以可执行代码表示的 Agent 架构。(ICLR 2025) [[code]](https://github.com/ShengranHu/ADAS)
 - [TextGrad: Automatic "Differentiation" via Text](https://arxiv.org/abs/2406.07496) - 通过文本反馈在复合 AI 系统中「反向传播」，优化提示与代码。(Nature 2025) [[code]](https://github.com/zou-group/textgrad)
-- [GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning](https://arxiv.org/abs/2507.19457) - 遗传-帕累托提示进化：在 Pareto 前沿维护提示池，通过对完整轨迹的自然语言反思提出变异；比 GRPO 最高提升 20%，rollout 需求少 35 倍。(ICLR 2026 Oral) [[code]](https://github.com/gepa-ai/gepa)
+- [GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning](https://arxiv.org/abs/2507.19457) - 遗传-帕累托提示进化：在 Pareto 前沿维护提示池，通过对完整轨迹的自然语言反思提出变异；比 GRPO 最高提升 20%，rollout 用量仅为 1/35。(ICLR 2026 Oral) [[code]](https://github.com/gepa-ai/gepa)
 
 ## L5 元改进层
 
@@ -124,7 +139,7 @@
 - [Huxley-Gödel Machine](https://arxiv.org/abs/2510.21614) - DGM 的后继：学习「预期自我改进收益」估计来指导修改目标的选择，即进化自我改进的搜索策略。(arXiv 2025)
 - [EvoX](https://arxiv.org/abs/2602.23413) - 进化策略本身也作为进化对象的元进化框架。(arXiv 2026)
 
-## L6 标准层
+## L6 准则层
 
 进化的对象是裁判：评估器、验证器、评分准则。特征失败模式：**准则漂移**——裁判在共同进化中被被评者带偏。
 
@@ -144,19 +159,21 @@
 模型对自身能力与行为的度量——为各层提供「改进是否真实」的测量学基础。
 
 - [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050) - 训练过程奖励模型评分中间推理步骤，引导更可靠的解选择。(ICLR 2024)
-- [Language Models (Mostly) Know What They Know](https://arxiv.org/abs/2207.05221) - 研究模型评估自身答案正确性的校准能力。(Anthropic, arXiv 2022)
+- [Language Models (Mostly) Know What They Know](https://arxiv.org/abs/2207.05221) - Anthropic 的研究：模型评估自身答案正确性的校准能力。(arXiv 2022)
 - [Looking Inward: Language Models Can Learn About Themselves by Introspection](https://arxiv.org/abs/2410.13787) - 模型对自身行为有特权预测能力，优于其他模型的预测。(ICLR 2025)
 
 ## 安全与目标保持
+
+系统自我修改时可能出什么问题：奖励篡改、目标漂移、欺骗性对齐与监督难题。
 
 - [Concrete Problems in AI Safety](https://arxiv.org/abs/1606.06565) - 奖励篡改、可扩展监督、安全探索、分布偏移鲁棒性等实际安全问题的框架性论文。(arXiv 2016)
 - [Scalable Agent Alignment via Reward Modeling](https://arxiv.org/abs/1811.07871) - 递归奖励建模：监督超出人类直接评估能力的 Agent。(arXiv 2018)
 - [Risks from Learned Optimization in Advanced Machine Learning Systems](https://arxiv.org/abs/1906.01820) - mesa-optimizer 分析：学习到的内部目标可能与训练目标偏离。(arXiv 2019)
 - [Reward Tampering Problems and Solutions in Reinforcement Learning](https://arxiv.org/abs/1908.04734) - 用因果影响图刻画篡改奖励过程的激励并给出设计原则。(Synthese 2021)
 - [Optimal Policies Tend to Seek Power](https://arxiv.org/abs/1912.01683) - 证明最优 Agent 在特定条件下有保持选项、寻求环境控制权的激励。(NeurIPS 2021)
-- [Constitutional AI: Harmlessness from AI Feedback](https://arxiv.org/abs/2212.08073) - 用书面原则与模型生成的批评扩展监督规模，保留显式行为约束。(Anthropic, arXiv 2022)
+- [Constitutional AI: Harmlessness from AI Feedback](https://arxiv.org/abs/2212.08073) - Anthropic 的方案：用书面原则与模型生成的批评扩展监督规模，保留显式行为约束。(arXiv 2022)
 - [Model Evaluation for Extreme Risks](https://arxiv.org/abs/2305.15324) - 针对危险涌现能力（含自主复制与适应）的能力与对齐评估框架。(arXiv 2023)
-- [Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training](https://arxiv.org/abs/2401.05566) - 欺骗性策略可在标准安全训练中保持隐蔽。(Anthropic, arXiv 2024)
+- [Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training](https://arxiv.org/abs/2401.05566) - 来自 Anthropic：欺骗性策略可在标准安全训练中保持隐蔽。(arXiv 2024)
 - [Safely Interruptible Agents](https://intelligence.org/files/Interruptibility.pdf) - 设计不产生抵抗人为干预激励的强化学习 Agent。(UAI 2016)
 - [Evaluating Goal Drift in Language Model Agents](https://arxiv.org/abs/2505.02709) - 度量长时程 Agent 在环境压力下的目标偏离。(arXiv 2025)
 - [Your Agent May Misevolve: Emergent Risks in Self-evolving LLM Agents](https://arxiv.org/abs/2509.26354) - 提出 misevolution 概念，系统研究模型、记忆、工具、工作流四条进化路径上的有害漂移。(ICLR 2026)
@@ -164,12 +181,16 @@
 
 ## 评测基准
 
+检验「自我改进」声称是否成立的任务套件。
+
 - [SWE-bench](https://arxiv.org/abs/2310.06770) - 真实 GitHub issue 解决基准（生成补丁并通过仓库测试验证），DGM 等自我修改系统的常用评估。(ICLR 2024)
 - [MLAgentBench](https://arxiv.org/abs/2310.03302) - 评估语言 Agent 能否从研究指令自主执行并改进 ML 实验。(ICML 2024)
-- [MLE-bench](https://arxiv.org/abs/2410.07095) - 75 个 Kaggle 竞赛上的端到端 ML 工程评估。(OpenAI, ICLR 2025)
+- [MLE-bench](https://arxiv.org/abs/2410.07095) - OpenAI 的端到端 ML 工程评估，覆盖 75 个 Kaggle 竞赛。(ICLR 2025)
 - [RE-Bench](https://arxiv.org/abs/2411.15114) - 固定时间预算下 AI Agent 与人类专家的开放式 ML 研发任务对比。(ICML 2025)
 
 ## 开源框架与工具
+
+可运行的实现：从进化式编码 Agent 到自优化 LM 流水线。
 
 - [OpenEvolve](https://github.com/algorithmicsuperintelligence/openevolve) - AlphaEvolve 的开源复现，社区维护的进化式编码 Agent。
 - [DGM](https://github.com/jennyzzt/dgm) - Darwin Gödel Machine 官方实现。
@@ -188,12 +209,16 @@
 
 ## 产品与商业
 
+围绕自进化 Agent 技术的商业实践。
+
 - [Sakana AI](https://sakana.ai) - The AI Scientist 系列背后的公司，自动化研究产品线。
 - [Apodex](https://platform.apodex.ai) - 自研模型 + 开源 Agent 运行时（[FrontierAgent](https://github.com/ApodexAI/FrontierAgent)），主打验证中心的研究型 Agent Team。
 - [Letta](https://www.letta.com) - 状态化/记忆驱动 Agent 的商业平台，开源框架见上。
 - [Agent Zero](https://github.com/agent0ai/agent-zero) - 以个人助手形态发行的开源 Agent 产品。
 
 ## 历史源流与理论基础
+
+早于 LLM 时代、预示了递归自我改进的思想。
 
 - [Gödel Machines: Self-Referential Universal Problem Solvers](https://people.idsia.ch/~juergen/goedelmachine.html) - 完全自指机器：在证明修改能提升期望效用后改写自身。RSI 的理论原型。(Schmidhuber, 2006)
 - [POWERPLAY: Training an Increasingly General Problem Solver](https://arxiv.org/abs/1112.5309) - 交替发明新任务与修改求解器，持续扩展已验证的能力集。(arXiv 2011)
