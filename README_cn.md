@@ -215,6 +215,7 @@ Agent 编辑自身源代码，并保留经检验的版本谱系。
 - [Apodex](https://platform.apodex.ai) - 自研模型 + 开源 Agent 运行时（[FrontierAgent](https://github.com/ApodexAI/FrontierAgent)），主打以验证为核心的研究型 Agent 团队。
 - [Letta](https://www.letta.com) - 状态化/记忆驱动 Agent 的商业平台，开源框架见上文。
 - [Agent Zero](https://github.com/agent0ai/agent-zero) - 以个人助手形态发布的开源 Agent 产品。
+- [Agent QA](https://github.com/vostride/agent-qa) - 以自然语言执行 Web 和移动端测试，将执行观察整理为持久记忆，并在后续测试步骤中检索复用，是上下文与记忆适应机制的应用。采用 FSL-1.1-ALv2 源码可用许可。
 
 ## 历史源流与理论基础
 
