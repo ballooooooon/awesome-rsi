@@ -215,6 +215,7 @@ Commercial efforts built around self-evolving agent technology.
 - [Apodex](https://platform.apodex.ai) - In-house models + open-source agent runtime ([FrontierAgent](https://github.com/ApodexAI/FrontierAgent)); verification-centric research agent teams.
 - [Letta](https://www.letta.com) - Commercial platform for stateful, memory-driven agents; open-source framework listed above.
 - [Agent Zero](https://github.com/agent0ai/agent-zero) - Open-source agent product distributed as a personal assistant.
+- [Agent QA](https://github.com/vostride/agent-qa) - Natural-language web and mobile testing product that curates execution observations into persistent memory and retrieves them for later test steps; an application of context/memory adaptation. Source-available under FSL-1.1-ALv2.
 
 ## Historical & Theoretical Foundations
 
