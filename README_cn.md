@@ -204,6 +204,7 @@ Agent 编辑自身源代码，并保留经检验的版本谱系。
 - [ADAS](https://github.com/ShengranHu/ADAS) - 元 Agent 搜索可执行 Agent 设计的官方实现。
 - [TextGrad](https://github.com/zou-group/textgrad) - 文本「梯度」优化框架。
 - [GEPA](https://github.com/gepa-ai/gepa) - 遗传-Pareto 提示进化官方实现，并作为优化器集成到 DSPy 中。
+- [Gear](https://github.com/rsi-gear/gear) - 利用执行轨迹与基准评测反馈迭代优化智能体的提示词、工具和工作流，将选中的外壳版本保留供后续轮次使用。
 - [Agent Zero](https://github.com/agent0ai/agent-zero) - 提示、工具、技能、插件均可检视、替换的开放 Agent 框架。
 - [Letta](https://github.com/letta-ai/letta) - 记忆优先的 Agent 框架，长期运行的 Agent 可重写上下文并学习技能。
 
