@@ -205,6 +205,7 @@ Runnable implementations, from evolutionary coding agents to self-optimizing LM 
 - [TextGrad](https://github.com/zou-group/textgrad) - Textual-"gradient" optimization framework.
 - [GEPA](https://github.com/gepa-ai/gepa) - Genetic-Pareto prompt evolution with reflective feedback; also integrated into DSPy as an optimizer.
 - [Gear](https://github.com/rsi-gear/gear) - Uses execution traces and benchmark feedback to iteratively optimize agent prompts, tools, and workflows, retaining versioned harness candidates for later rounds.
+- [Reef](https://github.com/Human-Agent-Society/reef) - Continual-learning serving infrastructure: records each request behind an OpenAI- and Anthropic-compatible endpoint, matches later scores or feedback to those records by receipt, and publishes an accepted candidate update (model weights, or a harness tree of rules, skills, prompts, and configuration) as a versioned, rollback-capable artifact while the endpoint keeps serving.
 - [Agent Zero](https://github.com/agent0ai/agent-zero) - Open agent framework where prompts, tools, skills, and plugins are all inspectable and replaceable.
 - [Letta](https://github.com/letta-ai/letta) - Memory-first agent framework; long-running agents rewrite their own context and learn skills.
 

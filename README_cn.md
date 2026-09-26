@@ -205,6 +205,7 @@ Agent 编辑自身源代码，并保留经检验的版本谱系。
 - [TextGrad](https://github.com/zou-group/textgrad) - 文本「梯度」优化框架。
 - [GEPA](https://github.com/gepa-ai/gepa) - 遗传-Pareto 提示进化官方实现，并作为优化器集成到 DSPy 中。
 - [Gear](https://github.com/rsi-gear/gear) - 利用执行轨迹与基准评测反馈迭代优化智能体的提示词、工具和工作流，将选中的外壳版本保留供后续轮次使用。
+- [Reef](https://github.com/Human-Agent-Society/reef) - 持续学习服务基础设施：在 OpenAI / Anthropic 兼容端点后记录每次请求，用 receipt 将后续的分数或文本反馈匹配回对应记录，并把通过筛选的候选更新（模型权重，或由规则、技能、提示与配置组成的外壳树）发布为可回滚的版本化产物，端点在此期间保持在线。
 - [Agent Zero](https://github.com/agent0ai/agent-zero) - 提示、工具、技能、插件均可检视、替换的开放 Agent 框架。
 - [Letta](https://github.com/letta-ai/letta) - 记忆优先的 Agent 框架，长期运行的 Agent 可重写上下文并学习技能。
 
