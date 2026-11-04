@@ -57,6 +57,7 @@
 - [Chain-of-Verification Reduces Hallucination in Large Language Models](https://arxiv.org/abs/2309.11495) - 先规划并回答独立验证问题，再产出修正响应。(ACL 2024 Findings)
 - [Improving Factuality and Reasoning in Language Models through Multiagent Debate](https://arxiv.org/abs/2305.14325) - 多个模型实例经迭代提案与互评收敛到更准确的答案。(ICML 2024)
 - [Large Language Models Cannot Self-Correct Reasoning Yet](https://arxiv.org/abs/2310.01798) - 无外部反馈的内在自我纠错会降低推理表现；本层的负结果基线。(ICLR 2024)
+- [Translate-and-Revise: Boosting Large Language Models for Constrained Translation](https://arxiv.org/abs/2407.13164) - 翻译后把译文尚未满足的约束（如指定术语）告诉 LLM 并提示其修订；显式的约束检查作为驱动每次修正的外部信号。(CCL 2024)
 
 ### 跨代产物进化（持久产物）
 

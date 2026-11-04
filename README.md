@@ -57,6 +57,7 @@ Within-task loops: the model critiques and rewrites its own output within one se
 - [Chain-of-Verification Reduces Hallucination in Large Language Models](https://arxiv.org/abs/2309.11495) - Plans and answers independent verification questions before producing a revised response. (ACL 2024 Findings)
 - [Improving Factuality and Reasoning in Language Models through Multiagent Debate](https://arxiv.org/abs/2305.14325) - Multiple model instances converge on more accurate answers through iterated proposals and critique. (ICML 2024)
 - [Large Language Models Cannot Self-Correct Reasoning Yet](https://arxiv.org/abs/2310.01798) - Intrinsic self-correction without external feedback degrades reasoning; the negative-result baseline for this layer. (ICLR 2024)
+- [Translate-and-Revise: Boosting Large Language Models for Constrained Translation](https://arxiv.org/abs/2407.13164) - After translating, the LLM is told which constraints (e.g. required terminology) its output still misses and is prompted to revise it; an explicit constraint check is the external signal driving each correction. (CCL 2024)
 
 ### Cross-Generational Artifact Evolution (Persistent Artifacts)
 
